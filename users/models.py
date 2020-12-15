@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    suer = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
-# Create your models here.
+    # Create your models here.
+    def __str__(self):
+        return f'{self.user.username} Profile'
